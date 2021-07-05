@@ -5,6 +5,9 @@ const showChat = document.querySelector("#showChat");
 const backBtn = document.querySelector(".header__back");
 myVideo.muted = true;
 
+myVideo.setAttribute('controls', 'controls');
+const screenn = document.getElementById("shareButton");
+
 backBtn.addEventListener("click", () => {
   document.querySelector(".main__left").style.display = "flex";
   document.querySelector(".main__left").style.flex = "1";
@@ -26,10 +29,34 @@ var peer = new Peer(undefined, {
   
 })
 
+var currPeers1 = [];
+var currPeers2 = [];
 
 
+let myId;
+let peerId;
+let peerId2;
+
+
+
+
+//Recording testing
+
+
+
+
+
+var options = {
+  mimeType: 'video/webm'
+}
+
+
+var ArrayOfMediaStreams = [];
+
+console.log("hi1");
 
 let myVideoStream;
+
 navigator.mediaDevices
   .getUserMedia({
     audio: true,
@@ -37,32 +64,127 @@ navigator.mediaDevices
   })
   .then((stream) => {
     myVideoStream = stream;
+    ArrayOfMediaStreams.push(stream);
+    
     addVideoStream(myVideo, stream);
+    
 
     peer.on("call", (call) => {
       call.answer(stream);
+      currPeers2.push(call.peerConnection);
       const video = document.createElement("video");
+      video.setAttribute('controls', 'controls');
+      
+
+
       call.on("stream", (userVideoStream) => {
         addVideoStream(video, userVideoStream);
+        ArrayOfMediaStreams.push(userVideoStream);
+
+       
+        
       });
+
+
+      peerId = call.peer;
+
+      video.classList.add(peerId);
+ 
+     
     });
 
     socket.on("user-connected", (userId) => {
+      peerId = userId;
+
       connectToNewUser(userId, stream);
     });
   });
 
-const connectToNewUser = (userId, stream) => {
-  const call = peer.call(userId, stream);
-  const video = document.createElement("video");
-  call.on("stream", (userVideoStream) => {
-    addVideoStream(video, userVideoStream);
-  });
-};
+
+  
 
 peer.on("open", (id) => {
+  myId = id;
+  myVideo.classList.add(myId);
   socket.emit("join-room", ROOM_ID, id, user);
+
 });
+
+
+
+const connectToNewUser = (userId, stream) => {
+  const call = peer.call(userId, stream);
+
+  currPeers1.push(call.peerConnection);
+  const video = document.createElement("video");
+  video.setAttribute('controls', 'controls');
+  peerId2=userId;
+  video.classList.add(peerId2);
+
+
+  call.on("stream", (userVideoStream) => {
+    addVideoStream(video, userVideoStream);
+
+    ArrayOfMediaStreams.push(userVideoStream);
+  });
+
+
+};
+
+
+
+
+
+screenn.addEventListener("click", shareScreen);
+
+function shareScreen(){
+  navigator.mediaDevices.getDisplayMedia({cursor:true})
+  .then(screenStream=>{
+   
+    let videoTrack = screenStream.getVideoTracks()[0];
+
+    currPeers1.forEach((element) => {
+
+      let sender = element.getSenders().find(function(s){
+        return s.track.kind==videoTrack.kind;
+      });
+      sender.replaceTrack(videoTrack);
+    })
+
+    currPeers2.forEach((element) => {
+
+      let sender = element.getSenders().find(function(s){
+        return s.track.kind==videoTrack.kind;
+      });
+      sender.replaceTrack(videoTrack);
+    })
+    
+
+  })
+}
+
+
+const filterSelect = document.querySelector('select#filter');
+
+filterSelect.onchange = function() {
+  myVideo.classList.add(filterSelect.value);
+
+  var filterVal = filterSelect.value;
+  
+  socket.emit("filter-apply", myId, filterVal);
+
+};
+
+socket.on("apply-filter", (otherID, filter) =>{
+
+  if(otherID!=myId){
+    console.log(filter);
+  const filterVideo = document.getElementsByClassName(otherID)[0];
+  filterVideo.classList.add(filter);
+  
+  }
+
+})
 
 const addVideoStream = (video, stream) => {
   video.srcObject = stream;
@@ -70,6 +192,7 @@ const addVideoStream = (video, stream) => {
     video.play();
     videoGrid.append(video);
   });
+
 };
 
 let text = document.querySelector("#chat_message");
@@ -108,6 +231,8 @@ muteButton.addEventListener("click", () => {
   }
 });
 
+
+
 stopVideo.addEventListener("click", () => {
   const enabled = myVideoStream.getVideoTracks()[0].enabled;
   if (enabled) {
@@ -140,3 +265,65 @@ socket.on("createMessage", (message, userName) => {
         <span>${message}</span>
     </div>`;
 });
+
+
+const gdmOptions = {
+  video: {
+    cursor: "always"
+  },
+  audio: {
+    echoCancellation: true,
+    noiseSuppression: true,
+    sampleRate: 44100
+  }
+}
+
+
+
+
+// for(var i =0;i <videoElements.length; i++){
+
+  
+
+
+//   console.log(typeof videoElements[i].srcVideo);
+
+//   ArrayOfMediaStreams.push(videoElements[i].srcVideo);
+
+
+// }
+
+
+
+var recorder = new MultiStreamRecorder(ArrayOfMediaStreams, options);
+
+
+document.getElementById('btn-record-webm').onclick = function() {
+
+  // var videoElements = document.getElementsByTagName("video");
+
+  // console.log(videoElements.length);
+
+
+
+  
+
+
+  recorder.record();
+  
+};
+
+document.getElementById('btn-record-stop').onclick = function(){
+
+  recorder.stop(function(blob) {
+    
+  
+    // or
+    var blob = recorder.blob;
+    // var blobURL = URL.createObjectURL(blob);
+    saveAs(blob, "haha.webm");
+
+    console.log(blob);
+  });
+
+}

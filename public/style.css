@@ -8,6 +8,14 @@
   font-family: "Poppins", sans-serif;
 }
 
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  overflow-y: scroll;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -53,10 +61,11 @@ video {
   border-radius: 1rem;
   margin: 0.5rem;
   width: 400px;
-  object-fit: cover;
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
+  object-fit: fill;
+  
+  /* transform: rotateY(180deg); */
+  /* -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg); */
 }
 
 .options {
@@ -180,12 +189,50 @@ video {
     flex: 1;
   }
 
-  video {
+  video,canvas {
     height: auto;
     width: 100%;
+  }
+  
+  videon{
+    height: auto;
+    width: 100%;
+  }
+  
+  .screenShare{
+    transform: scale(-1, 1);            /*For Firefox (& IE) */
+        -webkit-transform: scale(-1, 1); 
   }
 
   #showChat {
     display: flex;
   }
+}
+
+
+
+
+.none {
+  -webkit-filter: none;
+  filter: none;
+}
+
+.blur {
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.grayscale {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.invert {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+
+.sepia {
+  -webkit-filter: sepia(1);
+  filter: sepia(1);
 }
