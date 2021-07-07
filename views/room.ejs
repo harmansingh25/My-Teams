@@ -4,19 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>videoChatApp</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <script src="/socket.io/socket.io.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
+
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js" integrity="sha512-UNbeFrHORGTzMn3HTt00fvdojBYHLPxJbLChmtoyDwB6P9hX5mah3kMKm0HHNx/EvSPJt14b+SlD8xhuZ4w9Lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="https://kit.fontawesome.com/4405b08c8a.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+     
+
     <script>
       const ROOM_ID = "<%= roomId %>";
     </script>
   </head>
-  <body>
+  <body >
+
     
-    <div class="header">
+    
+
+
+   <div class="header">
       <div class="logo">
         <div class="header__back">
           <i class="fas fa-angle-left"></i>
@@ -25,23 +42,97 @@
       </div>
     </div>  
     <div class="main">  
+
+      <!-- <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul> -->
+     
+
     <div class="main__left">
       <div class="videos__group">
         <div id="video-grid">
 
         </div>
       </div>
-      <div class="options">
+
+      <!-- Options Section -->
+
+      <div class="container-fluid options">
         <div class="options__left">
+
+          <!-- Stop-video option -->
+
           <div id="stopVideo" class="options__button">
-            <i class="fa fa-video-camera"></i>
+            <i class="fas fa-video"></i>
           </div>
+
+          <!-- Muting Audio option -->
+
+
           <div id="muteButton" class="options__button">
             <i class="fa fa-microphone"></i>
           </div>
+
+          <!-- Share Screen Option -->
+
+
           <div id="shareButton" class="options__button">
-            <i class="fa fa-microphone"></i>
+            <i class="fas fa-arrow-up"></i>
           </div>
+
+
+
+          <!-- filters -->
+
+
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </button>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-item"><a href="#">Some action</a></li>
+                <li class="dropdown-item"><a href="#">Some other action</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" tabindex="-1" href="#">Hover me for more options</a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
+                    <li class="dropdown-submenu">
+                      <a class="dropdown-item" href="#">Even More..</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-item"><a href="#">3rd level</a></li>
+                            <li class="dropdown-submenu"><a class="dropdown-item" href="#">another level</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item"><a href="#">4th level</a></li>
+                                <li class="dropdown-item"><a href="#">4th level</a></li>
+                                <li class="dropdown-item"><a href="#">4th level</a></li>
+                            </ul>
+                          </li>
+                            <li class="dropdown-item"><a href="#">3rd level</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-item"><a href="#">Second level</a></li>
+                    <li class="dropdown-item"><a href="#">Second level</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </div>
+          
+           
+          
+
           <label for="filter">Filter: </label>
     <select id="filter">
         <option value="none">None</option>
@@ -50,6 +141,10 @@
         <option value="invert">Invert</option>
         <option value="sepia">Sepia</option>
     </select>
+
+
+
+
     <button id='btn-record-webm'>START</button>
     <button id='btn-record-stop'>STOP</button>
           <div id="showChat" class="options__button">
@@ -77,9 +172,13 @@
       </div>
     </div>
   </div>
-
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
   </body>
-  <script src="script.js"></script>
+ 
+  <script src="/script.js"></script>
 </html>
 
 

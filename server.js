@@ -15,10 +15,19 @@ const io = require("socket.io")(server, {
 // const peerServer = PeerServer({ port: 8000, path: '/' });
 
 // app.use("/peerjs", peerServer);
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
+
 
 app.get("/", (req, res) => {
-  res.redirect(`/${uuidv4()}`);
+  
+  res.render("home");
+  // res.redirect(`/${uuidv4()}`);
+});
+
+app.get("/createroom", (req, res) => {
+  
+ 
+  res.redirect(`${uuidv4()}`);
 });
 
 app.get("/:room", (req, res) => {
