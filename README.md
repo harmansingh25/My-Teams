@@ -33,7 +33,7 @@ PPT Link :
 
 
 
-# Features implemented :
+# Technologies used:
 Technologies used:
 - HTML
 - CSS
