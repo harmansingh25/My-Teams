@@ -10,10 +10,11 @@ PPT Link :
 
 
 # View of different pages of the web-app
-![IMG](./Page1_1.png)
-![IMG](./Page1_2.png)
-![IMG](./Page2.png)
-![IMG](./Page3.png)
+- Page 1_1 ![IMG](./Page1_1.png)
+- Page 1_2 ![IMG](./Page1_1.png)
+- Page 2 ![IMG](./Page2.png)
+- Page 3 ![IMG](./Page3.png)
+
 
 # Features implemented :
 
