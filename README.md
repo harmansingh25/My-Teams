@@ -19,6 +19,7 @@ PPT Link :
 # Features implemented :
 
 - Minimum Functionality Achieved (Two people taling to each other)
+- More than 2 participants can join the meeting
 - Muting audio
 - Stopping video stream
 - OAuth using Google
