@@ -28,7 +28,8 @@ PPT Link : https://drive.google.com/file/d/1yoSTO6SZW4J9S-H66LRBeP8647zoUaOS/vie
 - Screen sharing
 - Applying Filters
 - Chat functionality (With date and time of the message sent)
-- Viewihng the participants present in the meeting
+- Viewing the participants present in the meeting
+- Watching video in full screen, pausing someone's video
 - Integrating the 'Adopt phase' : storing messages and retrieving those at the start of a meeting with the same room. Team members can chat before the meeting, during the meeting and after the meeting.
 
 
