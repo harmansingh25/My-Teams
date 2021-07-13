@@ -1,23 +1,61 @@
-# Video-chat-v1
+# My Teams (MS Engage 2021)
 
-Video-chat-v1 is a video chat app that makes it easy to groups up with people you want to meet
+Welcome to MyTeams! A one stop app for your team.
+
+Website Link : 
+
+Video Link : 
+
+PPT Link :
+
+
+# View of different pages of the web-app
+
+
+# Features implemented :
+
+- Minimum Functionality Achieved (Two people taling to each other)
+- Muting audio
+- Stopping video stream
+- OAuth using Google
+- Making separate rooms so that the app can be used by any team at any point in separate rooms
+- Sending invitiation through auto-generated mails
+- Screen sharing
+- Applying Filters
+- Chat functionality (With date and time of the message sent)
+- Viewihng the participants present in the meeting
+- Integrating the 'Adopt phase' : storing messages and retrieving those at the start of a meeting with the same room. Team members can chat before the meeting, during the meeting and after the meeting.
+
+
+
+
+# Features implemented :
+Technologies used:
+- HTML
+- CSS
+- JavaScript
+- Node.js
+- ExpressJs
+- ReactJS
+- MongoDB
+- EJS 
+- Socket.io
+- WebRTC
+- Peer-JS library
+
+
+
+# Agile Methodology used:
+Divided the work into sprints (Each sprint lasting 5-6 days). The sprints are :
+- Made a prelimnary architecture diagram and reviewd with mentor
+- Explored WebRTC, its functionality along with socket.io
+- Designed a basic app with WebRTC using Node.js, HTML, CSS, React, Express, EJS, etc
+- Added additional features like recording, chatting, screensharing, emailing etc.
+- Managed the ADOPT phase - integrated chat app with the database.
+
+
 
 ![IMG](./video-chat.png)
 
-Check out the live demo: https://video-chat-app-v1.herokuapp.com/
 
-An article I wrote which explains how I build this: https://bit.ly/3wh0gyR
-
-This app is build using NodeJS, Socket.io, and Peerjs(WebRTC)
-
-## How to run the project?
-
-1. Clone this repository in your local system.
-2. Open the command prompt from your project directory and run the command `npm start`.
-3. Go to your browser and type `http://127.0.0.1:5000/` in the address bar.
-4. Hurray! That's it.
-
-### ToDo
-
-- [ ] - Recreate the Front-end with React.
 
