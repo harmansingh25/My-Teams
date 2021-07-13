@@ -63,5 +63,5 @@ Divided the work into sprints (Each sprint lasting 5-6 days). The sprints are :
 
 
 
-
+P.S. : The node_modules have not been pushed. In order to run the code, install peer, socket.io, socket.io-client, express, cors, mongoose to run.
 
