@@ -10,7 +10,10 @@ PPT Link :
 
 
 # View of different pages of the web-app
-
+![IMG](./Page1_1.png)
+![IMG](./Page1_2.png)
+![IMG](./Page2.png)
+![IMG](./Page3.png)
 
 # Features implemented :
 
@@ -47,7 +50,7 @@ Technologies used:
 
 # Agile Methodology used:
 Divided the work into sprints (Each sprint lasting 5-6 days). The sprints are :
-- Made a prelimnary architecture diagram and reviewd with mentor
+- Made a prelimnary architecture diagram and reviewed with mentor
 - Explored WebRTC, its functionality along with socket.io
 - Designed a basic app with WebRTC using Node.js, HTML, CSS, React, Express, EJS, etc
 - Added additional features like recording, chatting, screensharing, emailing etc.
@@ -55,7 +58,7 @@ Divided the work into sprints (Each sprint lasting 5-6 days). The sprints are :
 
 
 
-![IMG](./video-chat.png)
+
 
 
 
