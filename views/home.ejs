@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1065485610685-nsmjhos91639hvdfhc9jquepsqjsr9tl.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+  <script defer src="https://kit.fontawesome.com/4405b08c8a.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="stylesHome.css">
+
+  <title>My Teams</title>
+</head>
+
+
+<!-- Body Section -->
+
+<body class="ms-Fabric" dir="ltr">
+
+  <!-- Main Body Section -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 leftSec">
+
+
+        <!-- Welcome message if user uses OAuth -->
+
+        <div class="googleData">
+          <div id="content2" ></div>
+          <div id="content" class="googleName ms-fontWeight-semibold"></div>
+          
+        </div>
+        
+
+
+        <img src="MSTeamsLogo4.jpg" class="logoImg" alt="Logo Image">
+        <div class="signBtn g-signin2" data-onsuccess="onSignIn" data-theme="light"></div>
+
+
+
+
+      </div>
+
+
+
+      <div class="col-md-6">
+
+
+
+        <section id="right-section">
+
+          <h1 class="mainHeading ms-fontWeight-bold">Welcome to MyTeams</h1>
+
+          <h4 class="seconHeading">A one stop app for your team</h4>
+
+          <div class="card">
+            <div class="card-body">
+
+              <input class="nameIn form-control form-control-lg" type="text" placeholder="Enter Your Name">
+
+
+              <button type="button" id="createRoom"
+                class="btn btn-outline-secondary rightDisplayBtn ms-fontWeight-semibold">Create Room</button>
+              <button type="button" id="joinRoom" class="btn btn-outline-secondary rightDisplayBtn ms-fontWeight-semibold">Join
+                room</button>
+
+             <input class="linkIn form-control form-control-lg" type="text" hidden="true" placeholder="Enter Link">
+
+             <button type="button" class="joinbtn btn btn-primary" hidden="true">Join</button>
+
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Footer -->
+
+  <footer id="footer">
+
+    <!-- <div class="footerContainer container-fluid"> -->
+
+
+    <a href = "https://www.linkedin.com/in/harman-singh-1272b11b0/" target="_blank" class="social-icon fab fa-linkedin"></a>
+
+    <a href = "https://www.instagram.com/harman.21/" target="_blank" class="social-icon fab fa-instagram"></a>
+    <a href="https://github.com/harmansingh25" target="_blank" class="social-icon fab fa-github"></a>
+    <a href="mailto: myteams2125@gmail.com" target="_blank" class="social-icon fas fa-envelope"></a>
+
+    <p>© Copyright 2021 MyTeams</p>
+
+    <!-- </div> -->
+
+
+  </footer>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+
+
+    <!-- Google OAuth handling: -->
+
+
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+
+     
+        
+
+        document.querySelector(".nameIn").setAttribute("value", profile.getGivenName());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+
+        var element = document.querySelector("#content");
+        var element2 = document.querySelector("#content2");
+        element.innerText="Welcome, "+profile.getGivenName()+"!";
+
+        var image = document.createElement("img");
+        image.setAttribute("src", profile.getImageUrl());
+        image.classList.add("googleImage")
+        element2.append(image);
+
+        
+      }
+      </script>
+
+
+
+
+
+</body>
+<script src="scripts.js"></script>
+
+
+
+</html>

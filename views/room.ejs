@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyTeams</title>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+  
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js"
+    integrity="sha512-UNbeFrHORGTzMn3HTt00fvdojBYHLPxJbLChmtoyDwB6P9hX5mah3kMKm0HHNx/EvSPJt14b+SlD8xhuZ4w9Lg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+  <script src="https://kit.fontawesome.com/4405b08c8a.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+
+
+  
+
+
+
+  <script>
+    const ROOM_ID = "<%= roomId %>";
+    const MY_NAME = "<%= myName %>";
+  </script>
+
+
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+(function() {
+emailjs.init("user_Hzjnmnlprye5rjCM71aol");
+})();
+</script>
+</head>
+
+<link rel="stylesheet" href="/style.css" />
+
+<body class="ms-Fabric" dir="ltr">
+
+
+  <!-- Header Section -->
+
+
+
+
+
+  <div class="header">
+    <div class="logo">
+      <!-- <div class="header__back">
+        <i class="fas fa-angle-left"></i>
+      </div> -->
+      <div class="header-content">
+
+        <i class="logoIcon ms-Icon ms-Icon--TeamsLogo"></i>
+        <h3 class="headerHead ms-fontWeight-semibold">MyTeams</h2>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid">
+
+
+  <div class="main">
+
+
+
+    <div class="leftNav beforeVidLeftNav">
+
+
+      <div id="showPartic"  class="options__button leftBtn">
+        <i class="sizeT ms-Icon ms-Icon--People"></i>
+      </div>
+
+      <div id="showChat"  class="options__button leftBtn">
+        <i class="sizeT ms-Icon ms-Icon--SkypeMessage"></i>
+      </div>
+
+
+      <div  id="btn-record-webm" class="options__button leftBtn"> 
+        <i  class="btn-record-webm sizeT fas fa-record-vinyl"></i>
+      </div>
+
+
+
+
+    </div>
+
+
+
+    <div class="main__left beforeVidLeftNav">
+      <div class="videos__group">
+        <div id="video-grid">
+
+        </div>
+      </div>
+
+      <!-- Options Section -->
+
+
+
+
+
+
+      <nav class="bottomNav navbar navbar-expand-lg navbar-light options">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+          <!-- Left Options -->
+
+
+          <ul class="navbar-nav mr-auto options_left">
+
+            <!-- Stop-video option -->
+
+            <li id="stopVideo " class="nav-item active">
+              <div id="stopVideo" class="options__button">
+                <i class="sizeT fas fa-video"></i>
+              </div>
+            </li>
+
+            <!-- Muting Audio option -->
+
+            <li class="nav-item">
+              <div id="muteButton" class="options__button">
+                <i class="sizeT fa fa-microphone"></i>
+              </div>
+            </li>
+
+
+            <!-- Share Screen Option -->
+
+            <li class="nav-item">
+              <div id="shareButton" class="shareBorder options__button">
+                <i class="sizeT2 fas fa-arrow-up"></i>
+              </div>
+            </li>
+
+
+
+            <!-- Filters -->
+
+
+            <li class="nav-item dropup">
+              <a class="filterText nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="filterText">Filters</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="nones dropdown-item" href="#">None</a>
+                <a class="blurs dropdown-item" href="#">Blur</a>
+                <a class="grayscales dropdown-item" href="#">Grayscale</a>
+                <a class="inverts dropdown-item" href="#">Invert</a>
+                <a class="sepias dropdown-item" href="#">Sepia</a>
+              </div>
+            </li>
+
+
+
+          </ul>
+
+          
+
+          <ul class="navbar-nav ml-auto">
+
+            <!-- End call button -->
+
+            <li class="nav-item">
+              <div class="options__right">
+                <div id="declineButton" class="options__button">
+                  <i class="sizeT ms-Icon ms-Icon--DeclineCall" ></i>
+                </div>
+              </div>
+            </li>
+
+
+            <!-- 
+            Invite button to invite other people to the meeting -->
+
+            <li class="nav-item">
+              <div class="options__right">
+                <div id="inviteButton" class="options__button">
+                  <a class="sizeT fas fa-user-plus" data-toggle="modal" data-target="#form"></a>
+                </div>
+              </div>
+            </li>
+
+            
+          </ul>
+
+        </div>
+      </nav>
+
+
+    </div>
+
+
+
+<!-- Handling Chat meessages while in the Meeting -->
+
+
+    <div class="main__right chatting beforeVidRight">
+      <div class="main__chat_window">
+
+        <p class="ms-fontWeight-bold meetingChat aux">Meeting Chat</p>
+
+        <div class="playVideo beforeVidIcon">
+          <i class="sizeT fas fa-video"></i>
+        </div>
+        <div class="header__back beforeVidCross" >
+          <i class="cross ms-Icon ms-Icon--Clear"></i>
+        </div>
+        
+
+        
+
+          <div class="messages">
+         
+
+          </div>
+
+       
+      </div>
+      <div class="main__message_container">
+        <input id="chat_message" type="text" autocomplete="off" placeholder="Enter your message">
+        <div id="send" class="options__button">
+          <i class="ms-Icon ms-Icon--Send" aria-hidden="true"></i>
+        </div>
+      </div>
+
+
+
+
+      
+    </div>
+
+    <!-- Handling participants window -->
+
+    <div class="main__right2 participants">
+      <div class="main__chat_window">
+
+        <p class="ms-fontWeight-bold meetingChat">Participants</p>
+        <div class="header__back">
+          <i class="cross2 ms-Icon ms-Icon--Clear"></i>
+        </div>
+        <div class="messages2">
+         
+
+        </div>
+      </div>
+
+     
+    
+      
+    </div>
+    
+  </div>
+
+</div>
+
+
+
+<!-- 
+To invite your friends be sending them an email -->
+
+
+
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="ms-fontWeight-bold modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="ms-fontWeight-semibold"for="email1">Your Invitation Link : </label>
+            <p class="modalP inviteLink ms-fontWeight-semibold"></p>
+          </div>
+          <div class="form-group">
+            <label class="ms-fontWeight-semibold" for="email1">Friend's name</label>
+            <input type="text" class="n_friend form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter Name">
+            
+          </div>
+          <div class="form-group">
+            <label class="ms-fontWeight-semibold" for="password1">Friends Email-address</label>
+            <input type="email" class="e_friend form-control" id="password1" placeholder="Enter email-id">
+          </div>
+         
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="button" data-toggle="modal" data-target="#form" class="invitefrnd ms-fontWeight-semibold invite btn btn-success">Send Invite</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Useful Scripts -->
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+
+<!-- Using Main Script to run this APP-->
+
+  <script src="/script.js"></script>
+
+</html>

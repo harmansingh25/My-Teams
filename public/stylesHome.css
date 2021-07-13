@@ -1,0 +1,201 @@
+ html,body{
+  
+
+    min-height: 100%;
+  min-height: 100vh;
+  margin :0;
+    
+  } 
+  
+
+
+  /* Handling Name Input and Image*/
+
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  .nameIn{
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+  
+  }
+
+  .linkIn{
+
+
+    width: 50%;
+
+    display: inline-block;
+  
+
+
+  }
+
+  .signBtn{
+    width: 50%;
+    margin : 0;
+
+    margin-left: 40%;
+  
+
+  }
+
+
+  .googleName{
+    
+    font-size: 1.3rem;
+    padding-top:7%;
+    padding-left: 10%;;
+
+    display: inline-block;
+  }
+  
+  .googleImage{
+    border-radius: 50%;
+    display: inline-block;
+  
+   
+
+  }
+
+  #content2{
+    display: inline-block;
+    padding-top:7%;
+    margin-left: 25%;
+  }
+  
+  /* Main Section */
+  .container-fluid{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .leftSec{
+    background-color: #F4F4FC;
+  }
+  
+  
+  /* Left Section */
+  
+  
+  .logoImg{
+    width: 50%;
+    margin : 0;
+    margin-top: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 15%;
+    /* border-top-left-radius: 20%;
+    border-top-right-radius: 20%; */
+  
+  }
+  
+  /* Right Section */
+  
+  
+  #right-section{
+    text-align: center;
+    padding-bottom: 3%;
+    margin-bottom: 15%;
+  
+  }
+  
+  .mainHeading{
+  
+  
+    margin-top: 15%;
+    color:#8378de;
+  
+  }
+  
+  .seconHeading{
+    margin-top:3%;
+  
+  }
+  
+  .card {
+    margin-top: 15%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 6% 0;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .rightDisplayBtn{
+  
+    color: #6264a7;
+    border-color: #6264a7;
+    margin : 8%;
+  
+  
+  }
+  
+  .col-md-6{
+      height:85vh;
+  }
+  .btn:hover{
+      color: #6264a7;
+    background-color: #E2E2F6;
+  
+  }
+  
+  
+
+
+
+
+.joinbtn{
+  background-color: #464775;
+  color:white;
+  display: inline-block;
+  margin-left: 5%;
+  width:20%;
+
+
+}
+
+
+
+
+  
+  
+  /* Footer */
+  
+  .social-icon{
+    margin: 30px 10px;
+    margin-bottom: 20px;
+  color: #6264A7;
+ 
+  
+  }
+  
+  .social-icon:hover {
+    color: black;
+  }
+  
+  #footer{
+    text-align: center;
+  
+    background-color: #E2E2F6;
+
+    height: 15vh;
+    
+  
+  
+  }
+  
+  p{
+  
+    padding-bottom: 2%;
+    color:#464775
+  
+  }
+  .footerContainer{
+
+    padding: 7%, 15%;
+
+  }
