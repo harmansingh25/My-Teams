@@ -4,9 +4,9 @@ Welcome to MyTeams! A one stop app for your team.
 
 Website Link : 
 
-Video Link : https://drive.google.com/file/d/1yoSTO6SZW4J9S-H66LRBeP8647zoUaOS/view?usp=sharing
+Video Link :
 
-PPT Link :
+PPT Link : https://drive.google.com/file/d/1yoSTO6SZW4J9S-H66LRBeP8647zoUaOS/view?usp=sharing
 
 
 # View of different pages of the web-app
