@@ -18,7 +18,7 @@ PPT Link : https://drive.google.com/file/d/1yoSTO6SZW4J9S-H66LRBeP8647zoUaOS/vie
 
 # Features implemented :
 
-- Minimum Functionality Achieved (Two people taling to each other)
+- Minimum Functionality Achieved (Two people talking to each other)
 - More than 2 participants can join the meeting
 - Muting audio
 - Stopping video stream
